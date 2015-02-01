@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block title_page %}{{ article.name }} - {% endblock %}
+
+{% block content %}
+
+    <article class="post">
+        <h1 class="title">{{ article.name }}</h1>
+
+        <div class="pubdate">
+            <time datetime="2014-05-20T22:22:00-07:00" pubdate="">{{ article.created_at }}</time>
+        </div>
+        <div class="entry">
+            {{ article.content|safe }}
+        </div>
+        <p style="display:none;" id="data-article-id">{{ article.id }}</p>
+
+        <button id='you-thanks' {% if not like %}style="display: none"{% endif %} class="btn btn-writer btn-like"><i class="fa fa-heart"></i>  You like it!</button>
+        <button id='thanks' {% if like %}style="display: none"{% endif %} class="btn btn-writer btn-like"><i class="fa fa-heart"></i>  Thanks</button>
+    </article>
+
+{% endblock %}
+{% block extra_asset %}
+<script>
+$(document).ready(function() {
+    $('#thanks').click(function(){
+        var article_id;
+        article_id = $("#data-article-id").text();
+         $.get('/like/'+ article_id, function(data){
+               if(data == "success") {
+                   $('#thanks').hide();
+                   $('#you-thanks').show();
+               } else {
+                   $('#thanks').hide();
+                   $('#you-thanks').show();
+               }
+           });
+    });
+});
+</script>
+{% endblock %}

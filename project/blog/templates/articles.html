@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+    {% for article in articles %}
+    <article class="post">
+        <h1 class="title"><a href="{% url 'blog.views.article' article.slug %}">{{ article.name }}</a></h1>
+
+        <div class="pubdate">
+            <span>{{ article.created_at }}</span>
+        </div>
+        <div class="entry">
+            {{ article.short_content }}
+        </div>
+    </article>
+    {% endfor %}
+
+    <nav id="pagination">
+        {% if articles.has_previous %}
+        <a class="previous" href="?page={{ articles.previous_page_number }}"><i class="fa fa-arrow-left"></i></a>
+        {% endif %}
+        {% if articles.has_next %}
+        <a class="next" href="?page={{ articles.next_page_number }}"><i class="fa fa-arrow-right"></i></a>
+        {% endif %}
+    </nav>
+
+{% endblock %}

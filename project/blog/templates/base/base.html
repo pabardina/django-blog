@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title_page %}{% endblock %}Simple Blog</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/app.min.css"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/atelier-dune.light.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top custom-navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Hello</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="link-menu" href="/">Blog</a></li>
+                    <li><a class="link-menu" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <p>
+            <span><a class="btn btn-social-icon btn-lg btn-pinterest" target="_blank" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a></span>
+            <span><a class="btn btn-social-icon btn-lg btn-pinterest" target="_blank" href="https://github.com/"><i class="fa fa-github"></i></a></span>
+            <span><a class="btn btn-social-icon btn-lg btn-pinterest" target="_blank" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></span>
+        </p>
+    </footer>
+</div>
+<div title="Back to Top" style="position: fixed; bottom: 5px; right: 5px; opacity: 0; cursor: pointer;" id="topcontrol"><i class="fa fa-angle-up"></i></div>
+
+<script type="application/javascript" src="{{ STATIC_URL }}js/jquery/jquery.min.js"></script>
+<script type="application/javascript" src="{{ STATIC_URL }}js/bootstrap/bootstrap.min.js"></script>
+<script type="application/javascript" src="{{ STATIC_URL }}js/backtotop.js"></script>
+<script type="application/javascript" src="{{ STATIC_URL }}js/scroll.js"></script>
+<script type="application/javascript" src="{{ STATIC_URL }}js/main.js"></script>
+
+{% block extra_asset %}{% endblock %}
+</body>
+</html>
